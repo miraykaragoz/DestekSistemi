@@ -1,0 +1,33 @@
+﻿@model List<SupportForm>
+
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<h2>Talepler</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Ad Soyad</th>
+            <th scope="col">E-posta adresi</th>
+            <th scope="col">Tür</th>
+            <th scope="col">Talep</th>
+            <th scope="col">İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var forms in Model)
+        {
+            <tr>
+                <td>@forms.Name</td>
+                <td>@forms.Email</td>
+                <td>@forms.SupportSubject</td>
+                <td>@forms.Message</td>
+                <td>
+                    <a href="/Admin/Approve/@forms.Id" class="btn btn-success">Onayla</a>
+                    <a href="/Admin/Delete/@forms.Id" onclick="return confirm('Silmek istediğinize emin misiniz?')" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
